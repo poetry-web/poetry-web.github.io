@@ -36,20 +36,6 @@ footer {font-size: 75%}
 #goback {color: #6c71c4; text-decoration: none; border-bottom: none;}
 #goback:hover {border-bottom: 1px solid #6c71c4}
 
-@media screen and (max-width: 600px) {
-
-    aside {margin-left: 400px;}
-
-h1 {
-    margin-left: 10px;
-}
-
-p {
-    margin-left: 20px;
-}
-
-}
-
 hr {
     margin-top: 4%;
 }
