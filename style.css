@@ -16,8 +16,6 @@ code {
 }
 
 
-.tab { margin-left: 40px; }
-
 a {
     border-bottom: 1px solid #444444;
     color: #444444;
@@ -82,8 +80,4 @@ hr {
 
 #linktotop-parent {
     float: right;
-}
-
-h1 {
-    font-size: 38px;
 }

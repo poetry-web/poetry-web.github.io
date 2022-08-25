@@ -21,7 +21,7 @@ for filename in os.listdir(path):
       title, date, info, lines = data[0], data[1], data[2], data[3:]
       year = date[-4:]
 
-      the_poem = ""
+      the_poem = "<p>"
       will_indent, do_indent = False, False
       for line in lines:
 
@@ -36,10 +36,10 @@ for filename in os.listdir(path):
       	elif "\\breakstanza" in line:
       		will_indent = True
       		the_line = line.replace("\\breakstanza", "")
-      		after =  "<br>\n<br>\n"
+      		after =  "</p>\n<p>"
       	elif "\\\\!" in line:
       		the_line = line.replace("\\\\!", "")
-      		after = "<br>\n<br>\n"
+      		after =  "</p>\n<p>"
       	elif "\\\\" in line:
       		the_line = line.replace("\\\\", "")
       		after = "<br>\n"
@@ -54,7 +54,7 @@ for filename in os.listdir(path):
 
       while True:
       	tmp = the_poem.split("\n")
-      	if tmp[-1] == "<br>" or tmp[-1] == "":
+      	if tmp[-1] == "<p>" or tmp[-1] == "":
       		the_poem = "\n".join(tmp[:-1])
       	else:
       		break
@@ -76,8 +76,8 @@ result = "<!-- Automatically generated -->"
 for year, year_set in years.items():
 	result += f"<h3>{year}</h3>\n\t<ul>\n"
 	for _, title, camel_title, poem in sorted(year_set, key = lambda x: x[0]):
-		result += "<li> <a href=\"./poems/\"" + camel_title + "\">" + title + "</a>"
-	result += "</ul>"
+		result += "\t\t<li> <a href=\"./poems/" + camel_title + "\">" + title + "</a>\n"
+	result += "\t</ul>\n"
 
 result += "<!-- END -->"
 
