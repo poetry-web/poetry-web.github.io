@@ -62,7 +62,7 @@ for filename in os.listdir(path):
       poem = str(base)
       poem = poem.replace("{{TITLE}}", title)
       poem = poem.replace("{{POEM}}", the_poem)
-      poem = poem.replace("{{INFO}}", info + " " + date if info != "NONE" else date)
+      poem = poem.replace("{{INFO}}", info + ", " + date if info != "NONE" else date)
 
       camel_title = to_camel_case(title) + ".html"
       years[year].add((date, title, camel_title, poem))
@@ -73,9 +73,9 @@ for filename in os.listdir(path):
 
 result = "<!-- Automatically generated -->"
 
-for year, year_set in years.items():
+for year, year_set in sorted(years.items()):
 	result += f"<h3>{year}</h3>\n\t<ul>\n"
-	for _, title, camel_title, poem in sorted(year_set, key = lambda x: x[0]):
+	for _, title, camel_title, poem in sorted(year_set, key = lambda x: x[0].split(".")[::-1]):
 		result += "\t\t<li> <a href=\"./poems/" + camel_title + "\">" + title + "</a>\n"
 	result += "\t</ul>\n"
 
